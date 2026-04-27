@@ -20,7 +20,7 @@ const authMiddleware = require('./middleware/authmiddleware');
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: "https://blogify-nine-eta.vercel.app/",
+    origin: "https://blogify-66772rii1-harsh0769s-projects.vercel.app/",
     credentials: true
 }));
 
