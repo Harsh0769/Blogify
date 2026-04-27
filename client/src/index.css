@@ -1,0 +1,48 @@
+ @import "tailwindcss";
+
+.carousel-container {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  padding: 2rem 0;
+  background-color: #fffbeb;
+  
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: scroll 20s linear infinite;
+  width: max-content;
+  padding-right: 1.5rem;
+  /* lets cards sit in a single row */
+}
+
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused;
+  /* pauses on hover */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.card {
+  width: 300px;
+  min-height: 250px;
+  background: white;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.25rem;
+  flex-shrink: 0;
+  /* stops cards from squishing */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

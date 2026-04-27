@@ -1,0 +1,26 @@
+const mongoose = require("mongoose");
+
+const postSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        // default: 'https://res.cloudinary.com/dyustzjyh/image/upload/v1776529987/blog-profileimg_ekf7qs.avif'
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    }
+}, {
+    timestamps: true
+});
+    
+
+module.exports = mongoose.model("Post", postSchema);

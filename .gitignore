@@ -1,0 +1,9 @@
+# create .gitignore
+echo "node_modules/" >> .gitignore
+echo ".env" >> .gitignore
+echo "dist/" >> .gitignore
+
+
+node_modules
+dist/.env
+server/.env
