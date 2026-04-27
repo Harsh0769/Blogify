@@ -16,13 +16,27 @@ const postRoutes = require('./routes/postRoutes');
 const connectDB = require('./db');
 const authMiddleware = require('./middleware/authmiddleware');
 
+const allowedOrigins = [
+  "https://blogify-66772rii1-harsh0769s-projects.vercel.app",
+  "https://blogify-nine-eta.vercel.app",
+  "http://localhost:5173"
+];
 
 app.use(express.json());
 app.use(cookieParser());
+
+
 app.use(cors({
-    origin: "https://blogify-nine-eta.vercel.app",
-    credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
 }));
+
 
 connectDB();
 
