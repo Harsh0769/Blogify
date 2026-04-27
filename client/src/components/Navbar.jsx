@@ -9,7 +9,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
 
     const handleLogout = async () => {
-        await axios.post("http://localhost:5001/api/auth/logout", {}, { withCredentials: true });
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {}, { withCredentials: true });
         setVerifiedUser(null);
         navigate("/");
     }

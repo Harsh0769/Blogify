@@ -13,7 +13,7 @@ const EditPost = () => {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        axios.get(`http://localhost:5001/api/post/${id}`, { withCredentials: true })
+        axios.get(`${import.meta.env.VITE_API_URL}/api/post/${id}`, { withCredentials: true })
             .then((res) => setPost({
                 title: res.data.title,
                 description: res.data.description,
@@ -63,7 +63,7 @@ const EditPost = () => {
 
         try {
             await axios.put(
-                `http://localhost:5001/api/post/${id}`,
+                `${import.meta.env.VITE_API_URL}/api/post/${id}`,
                 post,
                 { withCredentials: true }
             );

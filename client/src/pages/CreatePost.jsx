@@ -53,7 +53,7 @@ const CreatePost = () => {
 
         try {
             await axios.post(
-                "http://localhost:5001/api/post/createpost",
+                `${import.meta.env.VITE_API_URL}/api/post/createpost`,
                 { ...post, image },
                 { withCredentials: true }
             );

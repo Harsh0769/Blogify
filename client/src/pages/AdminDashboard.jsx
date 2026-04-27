@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        axios.get("http://localhost:5001/api/user/getusers",
+        axios.get(`${import.meta.env.VITE_API_URL}/api/user/getusers`,
             { withCredentials: true })
             .then((res) => setUsers(res.data))
             .catch((e) => console.log(e));
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
     const handleSave = async () => {
 
         try {
-            await axios.put(`http://localhost:5001/api/user/update/${editUser._id}`,
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/user/update/${editUser._id}`,
                 { name: editUser.name, email: editUser.email, profilePic: editUser.profilePic },
                 { withCredentials: true }
             );
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
         if (!window.confirm("Are you sure you want to delete this user?")) return;
 
         try {
-            await axios.delete(`http://localhost:5001/api/user/delete/${userId}`, { withCredentials: true });
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/user/delete/${userId}`, { withCredentials: true });
             setUsers(users.filter(user => user._id !== userId));
             alert("User deleted successfully");
         } catch (e) {

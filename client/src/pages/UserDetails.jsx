@@ -10,7 +10,7 @@ const UserDetails = () => {
     const id = window.location.pathname.split("/")[2];
 
     useEffect(() => {
-        axios.get(`http://localhost:5001/api/user/posts/${id}`, { withCredentials: true })
+        axios.get(`${import.meta.env.VITE_API_URL}/api/user/posts/${id}`, { withCredentials: true })
             .then((res) => setUserDetails(res.data))
             .catch((e) => console.log(e))
     }, [id])

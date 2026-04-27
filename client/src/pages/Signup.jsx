@@ -57,7 +57,7 @@ const Signup = () => {
         setLoading(true);
 
         try {
-            await axios.post("http://localhost:5001/api/auth/signup", user);
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/signup`, user);
             navigate("/login");
         } catch (err) {
             setError(err.response?.data?.message || "Signup failed. Please try again.");
