@@ -48,7 +48,7 @@ const login = async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, findUser.password);
 
     if (!isPasswordValid) {
-         res.status(401).json({ message: "Invalid password" });
+        return res.status(401).json({ message: "Invalid password" });
     } else {
         const token = JWT.sign(
         { id: findUser._id, role: findUser.role },
@@ -59,8 +59,8 @@ const login = async (req, res) => {
         //cookie-creation
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,
-            sameSite: "Strict",
+            secure: true,
+            sameSite: "none",
             maxAge: 3600000
         });
 
