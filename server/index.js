@@ -34,6 +34,10 @@ app.get("/", async (req, res) => {
     res.send(await User.find());
 })
 
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok" });
+})
+
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
