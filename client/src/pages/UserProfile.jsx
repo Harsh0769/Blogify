@@ -13,11 +13,11 @@ const UserProfile = () => {
     const [confirmId, setConfirmId] = useState(null);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_URL}/api/user/${id}`, { withCredentials: true })
+        axios.get(`/api/user/${id}`, { withCredentials: true })
             .then((res) => setUser(res.data))
             .catch((err) => console.log(err));
 
-        axios.get(`${import.meta.env.VITE_API_URL}/api/user/posts/${id}`, { withCredentials: true })
+        axios.get(`/api/user/posts/${id}`, { withCredentials: true })
             .then((res) => setPosts(res.data))
             .catch((err) => console.log(err));
     }, [id])
@@ -25,7 +25,7 @@ const UserProfile = () => {
     const handleDelete = async (e, postId) => {
         e.stopPropagation();
         try {
-            await axios.delete(`${import.meta.env.VITE_API_URL}/api/post/${postId}`, { withCredentials: true });
+            await axios.delete(`/api/post/${postId}`, { withCredentials: true });
             setPosts(posts.filter((post) => post._id !== postId));
             setConfirmId(null);
         } catch (err) {

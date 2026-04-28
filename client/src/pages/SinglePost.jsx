@@ -10,7 +10,7 @@ const SinglePost = () => {
     const [lightbox, setLightbox] = useState(false);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_URL}/api/post/${id}`, { withCredentials: true })
+        axios.get(`/api/post/${id}`, { withCredentials: true })
             .then((res) => setPost(res.data))
             .catch((err) => console.log(err))
     }, [id]);

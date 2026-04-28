@@ -11,7 +11,7 @@ const Dashboard = () => {
     const { verifiedUser } = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_URL}/api/post/getallposts`, { withCredentials: true })
+        axios.get(`/api/post/getallposts`, { withCredentials: true })
             .then((res) => setPosts(res.data))
             .catch((e) => console.log(e))
             .finally(() => setLoading(false));

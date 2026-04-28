@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         axios
-            .get(`${import.meta.env.VITE_API_URL}/api/auth/me`, { withCredentials: true })
+            .get(`/api/auth/me`, { withCredentials: true })
             .then((res) => { setVerifiedUser(res.data) })
             .catch(() => { setVerifiedUser(null) });
     }, [])

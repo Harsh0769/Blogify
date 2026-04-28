@@ -23,9 +23,9 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, user, { withCredentials: true });
+            const res = await axios.post(`/api/auth/login`, user, { withCredentials: true });
 
-            const userRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/me`, { withCredentials: true });
+            const userRes = await axios.get(`/api/auth/me`, { withCredentials: true });
 
             setVerifiedUser(userRes.data);
 

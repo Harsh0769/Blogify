@@ -56,7 +56,7 @@ const AdminSignup = () => {
         setLoading(true);
 
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/signup`, user);
+            await axios.post(`/api/auth/signup`, user);
             navigate("/login");
         } catch (err) {
             setError(err.response?.data?.message || "Signup failed. Please try again.");
