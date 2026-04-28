@@ -29,7 +29,7 @@ const Login = () => {
 
             setVerifiedUser(res.data.user);
 
-            if (userRes.data.role === "admin") {
+            if (res.data.user.role === "admin") {
                 setShowPopup(true);
             } else {
                 navigate("/dashboard");
