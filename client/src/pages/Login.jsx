@@ -25,9 +25,9 @@ const Login = () => {
         try {
             const res = await axios.post(`/api/auth/login`, user, { withCredentials: true });
 
-            const userRes = await axios.get(`/api/auth/me`, { withCredentials: true });
+            // const userRes = await axios.get(`/api/auth/me`, { withCredentials: true });
 
-            setVerifiedUser(userRes.data);
+            setVerifiedUser(res.data.user);
 
             if (userRes.data.role === "admin") {
                 setShowPopup(true);
