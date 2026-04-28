@@ -68,7 +68,7 @@ const AdminDashboard = () => {
 
                 <button
                     onClick={() => navigate("/dashboard")}
-                    className="flex items-center gap-2 text-sm text-gray-500 hover:text-amber-500 border border-gray-200 hover:border-amber-300 px-4 py-2 rounded-full cursor-pointer transition-colors absolute right-0 top-12"
+                    className="flex items-center gap-2 text-sm text-gray-500 hover:text-amber-500 border border-gray-200 hover:border-amber-300 px-4 py-2 rounded-full cursor-pointer transition-colors absolute right-0 top-9"
                 >
                     <i className="ri-layout-grid-line"></i>
                     User Dashboard
