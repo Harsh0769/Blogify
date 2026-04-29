@@ -67,7 +67,7 @@ const AdminDashboard = () => {
                         onClick={() => navigate("/")}
                         className="text-xl font-bold text-amber-500 cursor-pointer"
                     >
-                        ✦ MyBlog
+                        ✦ WordCraft
                     </h1>
                     <span className="hidden sm:inline text-gray-300">|</span>
                     <span className="hidden sm:inline text-sm font-medium text-gray-500">Admin Panel</span>
@@ -125,7 +125,7 @@ const AdminDashboard = () => {
                         >
                             {/* Action Buttons */}
                             <div
-                                className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                                className="absolute top-4 right-4 flex gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 group-hover:opacity-100 transition-opacity"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <button

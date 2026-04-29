@@ -72,7 +72,7 @@ const Signup = () => {
 
                 {/* Logo */}
                 <div className="text-center mb-8">
-                    <h1 className="text-2xl font-bold text-amber-500">✦ MyBlog</h1>
+                    <h1 className="text-2xl font-bold text-amber-500">✦ WordCraft</h1>
                     <p className="text-gray-400 text-sm mt-1">Create your account</p>
                 </div>
 

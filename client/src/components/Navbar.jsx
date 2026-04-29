@@ -22,7 +22,7 @@ const Navbar = () => {
                 onClick={() => navigate("/")}
                 className='text-xl font-bold text-amber-500 cursor-pointer tracking-tight'
             >
-                ✦ MyBlog
+                ✦ WordCraft
             </h1>
 
             {/* Nav Links */}

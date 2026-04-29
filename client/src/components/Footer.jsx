@@ -12,7 +12,7 @@ const Footer = () => {
 
                 {/* Brand */}
                 <div>
-                    <h2 className='text-white text-xl font-bold mb-3'>✦ MyBlog</h2>
+                    <h2 className='text-white text-xl font-bold mb-3'>✦ WordCraft</h2>
                     <p className='text-sm leading-relaxed text-gray-400'>
                         A space for curious minds. We write about tech, facts, and ideas
                         that make you think differently.
@@ -87,7 +87,7 @@ const Footer = () => {
             <div className='border-t border-gray-800 py-5 px-8'>
                 <div className='max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3'>
                     <p className='text-xs text-gray-500'>
-                        &copy; 2026 MyBlog. All rights reserved.
+                        &copy; 2026 WordCraft. All rights reserved.
                     </p>
                     <div className='flex items-center gap-5 text-xs text-gray-500'>
                         <span className='hover:text-amber-400 cursor-pointer transition-colors'>Privacy policy</span>

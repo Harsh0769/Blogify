@@ -65,9 +65,9 @@ const Hero = () => {
             </div>
 
             <section id="about" className="max-w-3xl mx-auto px-6 py-16 text-center cursor-pointer">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">About MyBlog</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">About WordCraft</h2>
                 <p className="text-gray-500 leading-relaxed">
-                    MyBlog is a space for curious minds to share ideas about tech, facts,
+                    WordCraft is a space for curious minds to share ideas about tech, facts,
                     and stories that matter. Whether you're here to read or write — you're
                     in the right place.
                 </p>

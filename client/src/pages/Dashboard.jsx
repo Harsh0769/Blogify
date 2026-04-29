@@ -8,6 +8,7 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState("");
     const { verifiedUser } = useContext(AuthContext);
 
     useEffect(() => {
@@ -17,40 +18,59 @@ const Dashboard = () => {
             .finally(() => setLoading(false));
     }, []);
 
+    const filtered = posts.filter(p =>
+        p.title.toLowerCase().includes(search.toLowerCase()) ||
+        p.description.toLowerCase().includes(search.toLowerCase()) ||
+        p.author.toLowerCase().includes(search.toLowerCase())
+    );
+
     return (
         <div className="min-h-screen bg-amber-50">
             <Navbar />
 
             {/* Full width header banner */}
-            <div className="w-full bg-white border-b border-gray-100 px-10 py-8 flex items-center justify-between">
-                <div>
-                    <h1 className="text-4xl font-bold text-gray-800">All Posts</h1>
-                    <p className="text-gray-400 text-sm mt-1">
-                        {posts.length} {posts.length === 1 ? "post" : "posts"} published
-                    </p>
+            {/* Full width header banner */}
+            <div className="w-full bg-white border-b border-gray-100 px-10 py-8">
+                <div className="flex items-center justify-between mb-5">
+                    <div>
+                        <h1 className="text-4xl font-bold text-gray-800">All Posts</h1>
+                        <p className="text-gray-400 text-sm mt-1">
+                            {filtered.length} {filtered.length === 1 ? "post" : "posts"} found
+                        </p>
+                    </div>
+
+
+                    {/* only showed when user is admin */}
+                    <div className="flex items-center gap-3">
+                        {verifiedUser?.role === "admin" && (
+                            <button
+                                onClick={() => navigate("/admin/dashboard")}
+                                className="flex items-center gap-2 text-sm text-gray-500 hover:text-amber-500 border border-gray-200 hover:border-amber-300 px-4 py-2 rounded-full cursor-pointer transition-colors"
+                            >
+                                <i className="ri-shield-user-line"></i>
+                                Admin Dashboard
+                            </button>
+                        )}
+                        <button
+                            onClick={() => navigate("/createpost")}
+                            className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-6 py-3 rounded-full cursor-pointer transition-colors"
+                        >
+                            <i className="ri-add-line text-base"></i>
+                            New post
+                        </button>
+                    </div>
                 </div>
 
-
-                <div className="flex items-center gap-3">
-
-                    {/* ← Show only if user is admin */}
-                    {verifiedUser?.role === "admin" && (
-                        <button
-                            onClick={() => navigate("/admin/dashboard")}
-                            className="flex items-center gap-2 text-sm text-gray-500 hover:text-amber-500 border border-gray-200 hover:border-amber-300 px-4 py-2 rounded-full cursor-pointer transition-colors"
-                        >
-                            <i className="ri-shield-user-line"></i>
-                            Admin Dashboard
-                        </button>
-                    )}
-
-                    <button
-                        onClick={() => navigate("/createpost")}
-                        className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-6 py-3 rounded-full cursor-pointer transition-colors"
-                    >
-                        <i className="ri-add-line text-base"></i>
-                        New post
-                    </button>
+                {/* Search Bar */}
+                <div className="relative">
+                    <i className="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input
+                        type="text"
+                        placeholder="Search by title, description or author..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="w-full bg-amber-50 border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-amber-400 transition-colors"
+                    />
                 </div>
             </div>
 
@@ -62,24 +82,30 @@ const Dashboard = () => {
             )}
 
             {/* Empty State */}
-            {!loading && posts.length === 0 && (
+            {!loading && filtered.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-32 text-gray-400">
-                    <p className="text-6xl mb-4">📭</p>
-                    <p className="text-xl font-medium text-gray-600">No posts yet</p>
-                    <p className="text-sm mb-6">Be the first one to write something!</p>
-                    <button
-                        onClick={() => navigate("/createpost")}
-                        className="bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-6 py-2.5 rounded-full cursor-pointer transition-colors"
-                    >
-                        Write a post
-                    </button>
+                    <p className="text-6xl mb-4">{search ? "🔍" : "📭"}</p>
+                    <p className="text-xl font-medium text-gray-600">
+                        {search ? "No posts found" : "No posts yet"}
+                    </p>
+                    <p className="text-sm mb-6">
+                        {search ? `No results for "${search}"` : "Be the first one to write something!"}
+                    </p>
+                    {!search && (
+                        <button
+                            onClick={() => navigate("/createpost")}
+                            className="bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-6 py-2.5 rounded-full cursor-pointer transition-colors"
+                        >
+                            Write a post
+                        </button>
+                    )}
                 </div>
             )}
 
             {/* Full width posts grid */}
             <div className="w-full px-10 py-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {posts.map((post) => (
+                    {filtered.map((post) => (
                         <div
                             key={post._id}
                             onClick={() => navigate(`/post/${post._id}`)}
