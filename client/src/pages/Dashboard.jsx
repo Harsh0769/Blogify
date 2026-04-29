@@ -19,16 +19,15 @@ const Dashboard = () => {
     }, []);
 
     const filtered = posts.filter(p =>
-        p.title.toLowerCase().includes(search.toLowerCase()) ||
-        p.description.toLowerCase().includes(search.toLowerCase()) ||
-        p.author.toLowerCase().includes(search.toLowerCase())
+        p.title?.toLowerCase().includes(search.toLowerCase()) ||
+        p.description?.toLowerCase().includes(search.toLowerCase()) ||
+        p.author?.name?.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
         <div className="min-h-screen bg-amber-50">
             <Navbar />
 
-            {/* Full width header banner */}
             {/* Full width header banner */}
             <div className="w-full bg-white border-b border-gray-100 px-10 py-8">
                 <div className="flex items-center justify-between mb-5">
