@@ -28,34 +28,36 @@ const Dashboard = () => {
         <div className="min-h-screen bg-amber-50">
             <Navbar />
 
-            {/* Full width header banner */}
-            <div className="w-full bg-white border-b border-gray-100 px-10 py-8">
+            {/* Header */}
+            <div className="w-full bg-white border-b border-gray-100 px-4 md:px-10 py-6 md:py-8">
+
+                {/* Title Row */}
                 <div className="flex items-center justify-between mb-5">
                     <div>
-                        <h1 className="text-4xl font-bold text-gray-800">All Posts</h1>
-                        <p className="text-gray-400 text-sm mt-1">
+                        <h1 className="text-2xl md:text-4xl font-bold text-gray-800">All Posts</h1>
+                        <p className="text-gray-400 text-xs md:text-sm mt-1">
                             {filtered.length} {filtered.length === 1 ? "post" : "posts"} found
                         </p>
                     </div>
 
-
-                    {/* only showed when user is admin */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 md:gap-3">
                         {verifiedUser?.role === "admin" && (
                             <button
                                 onClick={() => navigate("/admin/dashboard")}
-                                className="flex items-center gap-2 text-sm text-gray-500 hover:text-amber-500 border border-gray-200 hover:border-amber-300 px-4 py-2 rounded-full cursor-pointer transition-colors"
+                                className="flex items-center gap-1.5 text-xs md:text-sm text-gray-500 hover:text-amber-500 border border-gray-200 hover:border-amber-300 px-3 md:px-4 py-2 rounded-full cursor-pointer transition-colors"
                             >
                                 <i className="ri-shield-user-line"></i>
-                                Admin Dashboard
+                                <span className="hidden sm:inline">Admin Dashboard</span>
+                                <span className="sm:hidden">Admin</span>
                             </button>
                         )}
                         <button
                             onClick={() => navigate("/createpost")}
-                            className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-6 py-3 rounded-full cursor-pointer transition-colors"
+                            className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs md:text-sm font-medium px-4 md:px-6 py-2 md:py-3 rounded-full cursor-pointer transition-colors"
                         >
-                            <i className="ri-add-line text-base"></i>
-                            New post
+                            <i className="ri-add-line"></i>
+                            <span className="hidden sm:inline">New post</span>
+                            <span className="sm:hidden">Post</span>
                         </button>
                     </div>
                 </div>
@@ -82,12 +84,12 @@ const Dashboard = () => {
 
             {/* Empty State */}
             {!loading && filtered.length === 0 && (
-                <div className="flex flex-col items-center justify-center py-32 text-gray-400">
-                    <p className="text-6xl mb-4">{search ? "🔍" : "📭"}</p>
-                    <p className="text-xl font-medium text-gray-600">
+                <div className="flex flex-col items-center justify-center py-24 px-4 text-gray-400">
+                    <p className="text-5xl mb-4">{search ? "🔍" : "📭"}</p>
+                    <p className="text-lg font-medium text-gray-600 text-center">
                         {search ? "No posts found" : "No posts yet"}
                     </p>
-                    <p className="text-sm mb-6">
+                    <p className="text-sm mb-6 text-center">
                         {search ? `No results for "${search}"` : "Be the first one to write something!"}
                     </p>
                     {!search && (
@@ -101,9 +103,9 @@ const Dashboard = () => {
                 </div>
             )}
 
-            {/* Full width posts grid */}
-            <div className="w-full px-10 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {/* Posts Grid */}
+            <div className="w-full px-4 md:px-10 py-6 md:py-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                     {filtered.map((post) => (
                         <div
                             key={post._id}
@@ -115,36 +117,36 @@ const Dashboard = () => {
                                 <img
                                     src={post.image}
                                     alt={post.title}
-                                    className="w-full h-44 object-cover"
+                                    className="w-full h-40 md:h-44 object-cover"
                                 />
                             ) : (
                                 <div className="w-full h-2 bg-amber-400" />
                             )}
 
-                            <div className="p-5 flex flex-col flex-1">
+                            <div className="p-4 md:p-5 flex flex-col flex-1">
 
                                 {/* Title */}
-                                <h3 className="text-base font-semibold text-gray-800 mb-2 line-clamp-2">
+                                <h3 className="text-sm md:text-base font-semibold text-gray-800 mb-2 line-clamp-2">
                                     {post.title}
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-sm text-gray-500 leading-relaxed line-clamp-3 flex-1">
+                                <p className="text-xs md:text-sm text-gray-500 leading-relaxed line-clamp-3 flex-1">
                                     {post.description}
                                 </p>
 
                                 {/* Footer */}
-                                <div className="border-t border-gray-100 mt-4 pt-4 flex items-center gap-3">
+                                <div className="border-t border-gray-100 mt-4 pt-3 flex items-center gap-3">
 
                                     {/* Author Pic */}
                                     {post.author?.profilePic ? (
                                         <img
                                             src={post.author.profilePic}
                                             alt={post.author.name}
-                                            className="w-7 h-7 rounded-full object-cover border border-amber-200 shrink-0"
+                                            className="w-6 h-6 md:w-7 md:h-7 rounded-full object-cover border border-amber-200 shrink-0"
                                         />
                                     ) : (
-                                        <div className="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 text-xs font-semibold shrink-0">
+                                        <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 text-xs font-semibold shrink-0">
                                             {post.author?.name?.[0]?.toUpperCase() || "?"}
                                         </div>
                                     )}
