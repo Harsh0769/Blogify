@@ -18,12 +18,22 @@ const Navbar = () => {
         <nav className='h-16 bg-white border-b border-gray-200 flex items-center px-8 sticky top-0 z-50 shadow-sm'>
 
             {/* Logo */}
-            <h1
-                onClick={() => navigate("/")}
-                className='text-xl font-bold text-amber-500 cursor-pointer tracking-tight'
-            >
-                ✦ WordCraft
-            </h1>
+            {!verifiedUser ?
+                (
+                    <h1
+                        onClick={() => navigate("/")}
+                        className='text-xl font-bold text-amber-500 cursor-pointer tracking-tight'
+                    >
+                        ✦ WordCraft
+                    </h1>
+                ) : (
+                    <h1
+                        onClick={() => navigate("/dashboard")}
+                        className='text-xl font-bold text-amber-500 cursor-pointer tracking-tight'
+                    >
+                        ✦ WordCraft
+                    </h1>)
+            }
 
             {/* Nav Links */}
             <ul className='hidden md:flex space-x-8 ml-12'>
