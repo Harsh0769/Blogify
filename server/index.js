@@ -30,6 +30,10 @@ connectDB();
 
 const PORT = process.env.PORT;
 
+app.get("/", async (req, res) => {
+    res.json({ message: "Welcome to the WordCraft Backend API" });
+})
+
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok" });
 })
