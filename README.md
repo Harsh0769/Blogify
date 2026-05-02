@@ -61,8 +61,7 @@ Blogify/
 │   ├── src/
 │   │   ├── components/     # Navbar, Hero, Blog, Footer
 │   │   ├── pages/          # Dashboard, Login, Signup, SinglePost, etc.
-│   │   ├── context/        # AuthProvider (global auth state)
-│   │   └── assets/
+│   │   └── context/        # AuthProvider (global auth state)
 │   └── vercel.json         # Vercel proxy config
 │
 └── server/                 # Node/Express backend
